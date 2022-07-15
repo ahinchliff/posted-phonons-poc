@@ -1,0 +1,17 @@
+{
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"composite": true,
+		"rootDir": "./src",
+		"outDir": "../build/data/src",
+		"lib": ["dom", "es5", "es6"],
+		"target": "es5",
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"emitDecoratorMetadata": true,
+		"experimentalDecorators": true,
+		"sourceMap": true
+	},
+	"references": [{ "path": "../core-backend" }],
+	"include": ["./src", "../core-backend/src/**/*.d.ts"]
+}

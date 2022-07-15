@@ -1,0 +1,23 @@
+{
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"composite": true,
+		"rootDir": "./src",
+		"outDir": "../build/server/src",
+		"experimentalDecorators": true,
+		"emitDecoratorMetadata": true
+	},
+	"references": [
+		{ "path": "../shared-types" },
+		{ "path": "../data" },
+		{ "path": "../core-backend" }
+	],
+	"include": [
+		"./src",
+		"../core-backend/src/**/*.d.ts",
+		"../shared-types/src/**/*.d.ts",
+		"../data/src/**/*.d.ts"
+	],
+	"typeRoots": ["./types", "./node_modules/@types"],
+	"types": ["jest"]
+}

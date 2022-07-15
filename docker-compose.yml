@@ -1,0 +1,13 @@
+version: '2.2'
+services:
+  postgres:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: local
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./data/src/migrations:/docker-entrypoint-initdb.d
+      - '/var/run/docker.sock:/var/run/docker.sock'

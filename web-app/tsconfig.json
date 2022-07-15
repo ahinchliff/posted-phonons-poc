@@ -1,0 +1,28 @@
+{
+	"extends": "../tsconfig.json",
+	"compilerOptions": {
+		"composite": true,
+		"rootDir": "./src",
+		"outDir": "../build/client/src",
+		"lib": ["dom", "es2015"],
+		"jsx": "react-jsx",
+		"allowSyntheticDefaultImports": true,
+		"noEmit": false,
+		"allowJs": true,
+		"noFallthroughCasesInSwitch": true,
+		"forceConsistentCasingInFileNames": true,
+		"module": "esnext",
+		"resolveJsonModule": true,
+		"isolatedModules": true
+	},
+	"references": [
+		{
+			"path": "../shared-types"
+		}
+	],
+	"include": [
+		"./src/**/*",
+		"../shared-types/src/**/*.d.ts",
+		"./src/data/booster-packs.json"
+	]
+}

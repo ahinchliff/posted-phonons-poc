@@ -1,0 +1,6 @@
+.env
+node_modules
+cards/output/booster-packs-private.json
+./
+.DS_Store
+build

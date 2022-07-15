@@ -1,0 +1,12 @@
+{
+	"name": "@posted-phonons/core-backend",
+	"scripts": {
+		"clean": "rm -rf build",
+		"build": "tsc --build && rm -f tsconfig.tsbuildinfo"
+	},
+	"dependencies": {
+		"@types/uuid": "^8.3.0",
+		"typescript": "^4.7.4",
+		"uuid": "^8.3.2"
+	}
+}

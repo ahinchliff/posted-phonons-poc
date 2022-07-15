@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+	.anchor {
+		color: var(--tw-prose-links);
+		text-decoration: underline;
+		font-weight: 500;
+	}
+}

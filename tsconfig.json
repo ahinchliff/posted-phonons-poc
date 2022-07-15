@@ -1,0 +1,46 @@
+{
+	"compilerOptions": {
+		"composite": true,
+		"strict": true,
+		"target": "es6",
+		"module": "commonjs",
+		"moduleResolution": "node",
+		"esModuleInterop": true,
+		"resolveJsonModule": true,
+		"skipLibCheck": true,
+		"strictNullChecks": true,
+		"allowUnreachableCode": false,
+		"noImplicitAny": true,
+		"noImplicitReturns": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"rootDir": "./src",
+		"outDir": "./build",
+		"sourceMap": true
+	},
+	"references": [
+		{
+			"path": "./server"
+		},
+		{
+			"path": "./shared-types"
+		},
+		{
+			"path": "./web-app"
+		},
+		{
+			"path": "./data"
+		},
+		{
+			"path": "./core-backend"
+		}
+	],
+	"include": [
+		"./server/src/**/*.d.ts",
+		"./shared-types/src/**/*.d.ts",
+		"./web-app/src/**/*.d.ts",
+		"./data/src/**/*.d.ts",
+		"./core-backend/src/**/*.d.ts"
+	],
+	"exclude": ["node_modules", "*/dist/*", "*/build/*"]
+}
