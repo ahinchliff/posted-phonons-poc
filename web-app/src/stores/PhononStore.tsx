@@ -57,7 +57,6 @@ export const PhononStoreProvider: React.FC<{
 			setNoCardDetected(false);
 		} catch (e) {
 			const err = e as AxiosError;
-			console.log(err.code);
 			if (err.code === 'ECONNREFUSED' || err.code === 'ERR_NETWORK') {
 				setNoClientDetected(true);
 			}
@@ -135,8 +134,12 @@ export const PhononStoreProvider: React.FC<{
 	}, [selectedSession]);
 
 	const createMockCard = React.useCallback(async () => {
-		await phononClient.createMockCard();
-		await fetchSessions();
+		try {
+			await phononClient.createMockCard();
+			await fetchSessions();
+		} catch (e) {
+			console.error(e);
+		}
 	}, [fetchSessions]);
 
 	const createPhonon = React.useCallback(async () => {

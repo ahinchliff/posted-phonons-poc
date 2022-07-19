@@ -11,10 +11,11 @@ export default class PhononClient {
 	constructor(private baseUrl: string) {}
 
 	public fetchSessions = async (): Promise<string[]> => {
-		const sessionsResponse = await axios.get<{ Sessions: string[] }>(
+		const sessionsResponse = await axios.get<{ Name: string }[]>(
 			`${this.baseUrl}/listSessions`,
 		);
-		return sessionsResponse.data.Sessions;
+
+		return sessionsResponse.data.map((session) => session.Name);
 	};
 
 	public selectSession = async (
@@ -79,6 +80,7 @@ export default class PhononClient {
 	};
 
 	public createMockCard = async (): Promise<void> => {
+		console.log('--------abc');
 		await axios.get(`${this.baseUrl}/genMock`);
 	};
 }

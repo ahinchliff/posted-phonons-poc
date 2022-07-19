@@ -70,6 +70,9 @@ const NoClient: React.FC = () => {
 					<code>cd phonon-client</code>
 				</pre>
 				<pre data-prefix='$'>
+					<code>git checkout posted-phonons</code>
+				</pre>
+				<pre data-prefix='$'>
 					<code>go run main/phonon.go webUI</code>
 				</pre>
 			</div>
