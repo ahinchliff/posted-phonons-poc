@@ -11,11 +11,11 @@ export default class PhononClient {
 	constructor(private baseUrl: string) {}
 
 	public fetchSessions = async (): Promise<string[]> => {
-		const sessionsResponse = await axios.get<{ Name: string }[]>(
+		const sessionsResponse = await axios.get<{ Id: string }[]>(
 			`${this.baseUrl}/listSessions`,
 		);
 
-		return sessionsResponse.data.map((session) => session.Name);
+		return sessionsResponse.data.map((session) => session.Id);
 	};
 
 	public selectSession = async (
@@ -28,7 +28,7 @@ export default class PhononClient {
 	};
 
 	public fetchPhonons = async (session: string): Promise<Phonon[]> => {
-		const response = await axios.post(
+		const response = await axios.get(
 			`${this.baseUrl}/cards/${session}/listPhonons`,
 		);
 
@@ -42,10 +42,11 @@ export default class PhononClient {
 		nonce: number,
 	): Promise<string> => {
 		const result = await axios.post<{ Packet: string }>(
-			`${this.baseUrl}/cards/${session}/phonon/${phononKeyIndex}/post`,
+			`${this.baseUrl}/cards/${session}/phonon/post`,
 			{
 				RecipientsPublicKey: receipientsPublicKey,
 				Nonce: nonce,
+				KeyIndexes: [phononKeyIndex],
 			},
 		);
 
@@ -54,7 +55,7 @@ export default class PhononClient {
 
 	public fetchNonce = async (session: string): Promise<number> => {
 		const sessionsResponse = await axios.get<{ Nonce: number }>(
-			`${this.baseUrl}/cards/${session}/nonce`,
+			`${this.baseUrl}/cards/${session}/postedPhononNonce`,
 		);
 		return sessionsResponse.data.Nonce;
 	};
@@ -70,7 +71,7 @@ export default class PhononClient {
 		session: string,
 		packet: string,
 	): Promise<void> => {
-		await axios.post(`${this.baseUrl}/cards/${session}/consumePosted`, {
+		await axios.post(`${this.baseUrl}/cards/${session}/receivePostedPhonons`, {
 			Packet: packet,
 		});
 	};
@@ -80,7 +81,6 @@ export default class PhononClient {
 	};
 
 	public createMockCard = async (): Promise<void> => {
-		console.log('--------abc');
 		await axios.get(`${this.baseUrl}/genMock`);
 	};
 }
